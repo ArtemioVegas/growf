@@ -9,21 +9,17 @@ use App\Http\Requests\OrderRequest;
 use App\Response\CreateOrderResponse;
 use App\Response\ErrorResponse;
 use App\Services\OrderService;
-use App\Services\TariffDayValidator;
 use Illuminate\Http\JsonResponse;
 
 class OrderController extends Controller
 {
     private OrderService $orderService;
 
-    private TariffDayValidator $tariffDayValidator;
-
     private const TARIFS_PER_PAGE = 50;
 
-    public function __construct(OrderService $orderService, TariffDayValidator $tariffDayValidator)
+    public function __construct(OrderService $orderService)
     {
         $this->orderService = $orderService;
-        $this->tariffDayValidator = $tariffDayValidator;
     }
 
     public function index()
